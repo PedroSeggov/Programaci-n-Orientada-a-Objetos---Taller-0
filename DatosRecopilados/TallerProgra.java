@@ -148,22 +148,12 @@ public class TallerProgra {
     private static void modificaActividad() throws FileNotFoundException {
 		// TODO Auto-generated method stub
     	System.out.println("Cual actividad deseas modificar?");
-    	
-    	Buscardato();
-    	Scanner d= new Scanner(System.in);
-    	int Dotmodif=d.nextInt();
-    	
-    	
-		
-	}
-
-
-
-	private static int Buscardato() throws FileNotFoundException {
-		File archivo= new File("Registros.txt");
+    	File archivo= new File("Registros.txt");
 		
 		Scanner scaner=new Scanner(archivo);
 		int conteo= 0;
+		String datoModificar = null;
+		
 		
 		String[]  listaID=new String[200];
     	String[]  listaFecha=new String[200];
@@ -188,13 +178,56 @@ public class TallerProgra {
 			conteo++;	
 			
 		}scaner.close();
+		 Scanner d= new Scanner(System.in);
+	    	String Dotmodif=d.nextLine();
+	        
+	        int Seleccion=d.nextInt();
+	        /*
+	        for(int i=0;i<conteo;i++ ) {
+	        	if(listaID[i].equals(Dotmodif)) {
+	        		 datoModificar=listaID[i];
+	        		
+	        	}
+	        	
+	        }
+	        */
+
+	        switch(Seleccion){
+	            case 1:
+	                break;
+	            case 2:
+	            	System.out.println("0) Regresar.");
+	            	System.out.println("Ingrese nueva Fecha: ");
+	            	String nuevaFecha=d.nextLine();
+	            	
+	                modificar(Dotmodif,nuevaFecha,listaFecha);
+	                System.out.println("Fecha  modificada con exito!");
+	                break;
+	            case 3:
+	            	
+	                break;
+	            case 4:
+	                break;
 		
-		
-		return 0;
-		// TODO Auto-generated method stub
+    	
+    	
+    	
+    	
 		
 	}
 
+
+	private static String[]  modificar(String Dotmo, String nuevaFechas, String[] treslistaFecha) {
+		// TODO Auto-generated method stub
+		int conteo = treslistaFecha.length;
+		//int  cont=Integer.parseInt(Dotmo);
+		for(int i=0;i<conteo;i++ ) {
+        	if(treslistaFecha[i].equals(Dotmo)) {
+        		treslistaFecha[i]= nuevaFechas;		
+        			}
+			}
+		return treslistaFecha;
+	}
 
 
 	private static void registrarActividad() {
