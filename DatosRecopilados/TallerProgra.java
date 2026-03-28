@@ -30,44 +30,19 @@ public class TallerProgra {
     public static void SalidPantalla() {
         String menu = "1) Menu de Usuarios \n2) Menu de Analisis \n3) Salir";
         System.out.println(menu);
-        int seleccion = obtenerOpcion();
+       System.out.print("Seleccione una opción (1-3): ");
+        Scanner sc = new Scanner(System.in);
+        
+        
+        int seleccion =sc.nextInt(); 
         clasificador(seleccion);
+        sc.close();
     }
     /**
      * Captura y valida la opción ingresada por el usuario.
      * @return int Opción seleccionada validada entre 1 y 3.
      */
 
-    public static int obtenerOpcion() {
-        Scanner sc = new Scanner(System.in);
-        int opcion = 0;
-        boolean esValido = false;
-     // Bucle de validación para evitar errores de ejecución (Robustez)
-        while (!esValido) {
-            try {
-                System.out.print("Seleccione una opción (1-3): ");
-                opcion = Integer.parseInt(sc.nextLine());
-                
-                if (opcion >= 1 && opcion <= 3) {
-                    esValido = true;
-                
-                } 
-                
-                else {
-                
-                    System.out.println("Error: Debe elegir entre 1 y 3.");
-                
-                }
-            } 
-            
-            catch (NumberFormatException e) {
-                System.out.println("Error: ¡Debes ingresar un número!");
-            }
-        }
-        sc.close();
-        return opcion;
-        
-    }  
     
     /**
      * Redirige el flujo del programa según la opción del menú principal.
@@ -120,6 +95,7 @@ public class TallerProgra {
         System.out.println("3)Eliminar actividad.");
         System.out.println("4)Cambiar contraseña.");
         System.out.println("5)Salir.");
+		System.out.println();
         int Expression=s.nextInt();
         
         switch(Expression){
